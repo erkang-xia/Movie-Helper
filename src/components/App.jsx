@@ -1,33 +1,38 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import { CssBaseline } from '@mui/material';
-import { Route, Switch } from 'react-router-dom';
-import useStyles from './style';
 import { Actors, MovieInfo, Movies, NavBar, Profile } from '.';
+import { Content, Main, StyledToolbar } from './style';
+import useAlan from './Alan';
 
 const App = () => {
-  const classes = useStyles();
+  const alanBtnContainer = useRef(null);
+  const navigate = useNavigate();
+  useAlan();
+
+  useEffect(() => {
+    navigate('/');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
-    <div className={classes.root}>
+    <Main>
       <CssBaseline />
       <NavBar />
-      <main className={classes.content}>
-        <div className={classes.toolbar} />
-        <Switch>
-          <Route exact path="/profile/:id">
-            <Profile />
-          </Route>
-          <Route exact path="/">
-            <Movies />
-          </Route>
-          <Route exact path="/movies/:id">
-            <MovieInfo />
-          </Route>
-          <Route exact path="/actors/:id">
-            <Actors />
-          </Route>
-        </Switch>
-      </main>
-    </div>
+      <Content>
+        <StyledToolbar />
+        <Routes>
+          <Route path="/" element={<Movies />} />
+          <Route path="/categories/:id" element={<Movies />} />
+          <Route path="/genre/:id" element={<Movies />} />
+          <Route path="/approved" element={<Movies />} />
+          <Route path="/movies/:id" element={<MovieInfo />} />
+          <Route path="/actors/:id" element={<Actors />} />
+          <Route path="/profile/:id" element={<Profile />} />
+        </Routes>
+      </Content>
+      <div ref={alanBtnContainer} />
+    </Main>
   );
 };
 
