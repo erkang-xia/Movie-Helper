@@ -1,4 +1,4 @@
-# FILMPIRE - Shubham Kadam
+# FILMPIRE - Erkang Xia
 [View Demo](https://filmpire-ssk.netlify.app/)
 ## About the Project
 ![1](https://github.com/erkang-xia/Movie-Helper/blob/main/Screen%20Shot%202023-06-15%20at%201.28.11%20PM.png?raw=true)
