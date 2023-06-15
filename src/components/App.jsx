@@ -1,14 +1,11 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import { CssBaseline } from '@mui/material';
 import { Actors, MovieInfo, Movies, NavBar, Profile } from '.';
 import { Content, Main, StyledToolbar } from './style';
-import useAlan from './Alan';
 
 const App = () => {
-  const alanBtnContainer = useRef(null);
   const navigate = useNavigate();
-  useAlan();
 
   useEffect(() => {
     navigate('/');
@@ -31,7 +28,6 @@ const App = () => {
           <Route path="/profile/:id" element={<Profile />} />
         </Routes>
       </Content>
-      <div ref={alanBtnContainer} />
     </Main>
   );
 };

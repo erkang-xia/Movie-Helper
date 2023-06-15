@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useRef } from 'react';
 import {
   Box,
   CircularProgress,
@@ -12,7 +12,11 @@ import { MoviesList } from '..';
 import { selectGenreOrCategory } from '../../features/currentGenreOrCategory';
 import Pagination from '../../Pagination/Pagination';
 
+import useAlan from '../Alan';
+import Helper from '../Helper';
+
 const Movies = () => {
+  const alanBtnContainer = useRef(null);
   const lg = useMediaQuery((theme) => theme.breakpoints.only('lg'));
   const numberOfMovies = lg ? 16 : 18;
   const [page, setPage] = useState(1);
@@ -24,6 +28,8 @@ const Movies = () => {
     page,
     searchQuery,
   });
+
+  useAlan();
 
   if (isFetching) {
     return (
@@ -55,6 +61,8 @@ const Movies = () => {
         setPage={setPage}
         totalPages={data.total_pages}
       />
+      <div ref={alanBtnContainer} />
+      <Helper />
     </div>
   );
 };

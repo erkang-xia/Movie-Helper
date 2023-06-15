@@ -1,0 +1,12 @@
+.rcw-conversation-container > .rcw-header {
+  background-color: #3875cb;
+}
+
+.rcw-client > .rcw-message-text {
+  color: white;
+  background-color: #3875cb;
+}
+
+.rcw-launcher {
+  background-color: #3875cb;
+}
